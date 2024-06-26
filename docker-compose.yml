@@ -1,0 +1,31 @@
+version: '3'
+services:
+  user_service:
+    build:
+      context: ./user_service
+    ports:
+      - "5001:5000"
+    volumes:
+      - ./user_service:/app
+    environment:
+      - FLASK_ENV=development
+
+  product_service:
+    build:
+      context: ./product_service
+    ports:
+      - "5002:5000"
+    volumes:
+      - ./product_service:/app
+    environment:
+      - FLASK_ENV=development
+
+  order_service:
+    build:
+      context: ./order_service
+    ports:
+      - "5003:5000"
+    volumes:
+      - ./order_service:/app
+    environment:
+      - FLASK_ENV=development
