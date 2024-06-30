@@ -1,4 +1,4 @@
-version: '3'
+version: '4.31.1'
 services:
   user_service:
     build:
