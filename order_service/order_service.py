@@ -1,9 +1,17 @@
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
+from urllib.parse import quote as url_quote
 
 app = Flask(__name__)
+
+
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///orders.db'
 db = SQLAlchemy(app)
+
+@app.route('/status')
+def status():
+    return jsonify({'message': 'Order Service is running'}), 200
 
 class Order(db.Model):
     id = db.Column(db.Integer, primary_key=True)
