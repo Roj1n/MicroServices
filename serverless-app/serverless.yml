@@ -1,0 +1,40 @@
+service: my-microservices
+
+provider:
+  name: aws
+  runtime: python3.9
+
+plugins:
+  - serverless-offline
+  - serverless-wsgi
+
+functions:
+  order_service:
+    handler: handler.order
+    events:
+      - http:
+          path: order
+          method: get
+
+  product_service:
+    handler: handler.product
+    events:
+      - http:
+          path: product
+          method: get
+
+  user_service:
+    handler: handler.user
+    events:
+      - http:
+          path: user
+          method: get
+
+custom:
+  serverless-offline:
+    httpPort: 4000
+    lambdaPort: 4001
+    host: localhost
+  wsgi:
+    app: handler.app
+    packRequirements: false
