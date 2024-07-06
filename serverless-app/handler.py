@@ -1,3 +1,8 @@
+import sys
+sys.path.append('../order_service')
+sys.path.append('../product_service')
+sys.path.append('../user_service')
+
 from order_service import app as order_app
 from product_service import app as product_app
 from user_service import app as user_app

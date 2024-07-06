@@ -21,7 +21,9 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(120), nullable=False)
 
-db.create_all()
+
+with app.app_context():
+    db.create_all()
 
 @app.route('/users', methods=['POST'])
 def create_user():

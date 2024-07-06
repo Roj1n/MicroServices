@@ -19,7 +19,9 @@ class Product(db.Model):
     description = db.Column(db.String(200), nullable=False)
     price = db.Column(db.Float, nullable=False)
 
-db.create_all()
+
+with app.app_context():
+    db.create_all()
 
 @app.route('/products', methods=['POST'])
 def create_product():

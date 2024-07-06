@@ -4,6 +4,7 @@ provider:
   name: aws
   runtime: python3.9
 
+
 plugins:
   - serverless-offline
   - serverless-wsgi
